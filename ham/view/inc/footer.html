@@ -26,7 +26,7 @@
 			</div>
 			<div class="span1_of_4">
 				<h4>最近访客</h4>
-				<ul class="ds-recent-visitors f_nav"data-num-items="9"></ul>  
+				<ul class="ds-recent-visitors f_nav" data-num-items="9"></ul>  
 			</div>
 			<div class="clear"></div>
 		</div>
@@ -39,25 +39,5 @@
 	</div>
 </div>
 </div>
-<!--多说js加载开始，一个页面只需要加载一次 -->
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"ham"};
-(function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = '/js/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
-})();
-</script>
-<!--多说js加载结束，一个页面只需要加载一次 -->
-<script src="/js/jquery.min.js"></script>
-<script src="/js/jquery.lazyloadWebp.js"></script>
-<script src="/js/prism.full.min.js"></script>
-<script>
-    $(function(){
-        $("img").lazyloadWebp({
-            effect : "fadeIn"
-        });
-    });
-</script>
+
+<script data-main="js/main.js" src="/js/require.js"></script>
