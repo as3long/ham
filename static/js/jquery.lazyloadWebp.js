@@ -1,4 +1,4 @@
-define(["./jquery"], function (jQuery) {
+define(["jquery"], function (jQuery) {
 
     /*
      * Lazy Load - jQuery plugin for lazy loading images
