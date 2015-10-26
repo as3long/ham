@@ -1,0 +1,41 @@
+<% include inc/admin_header.html %>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <div>
+                    <h2>管理用户<a href="/admin/user">新增</a></h2>
+                </div>
+                <div>
+                    <table class="table table-hover">
+                        <colgroup>
+                            <col width="40%" />
+                            <col width="20%" />
+                            <col width="20%" />
+                            <col width="20%" />
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>用户名</th>
+                                <th>昵称</th>
+                                <th>电子邮件</th>
+                                <th>用户组</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% users.forEach(function(user){ %>  
+                            <tr>
+                                <td>
+                                    <a href="/admin/user/<%-user.uid%>"><%-user.name%></a>
+                                </td>
+                                <td><%-user.screenName%></td>
+                                <td><%-user.mail%></td>
+                                <td><%-user.group%></td>
+                            </tr>
+                            <% }) %>  
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% include inc/admin_footer.html %>

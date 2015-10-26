@@ -1,0 +1,145 @@
+<% include inc/admin_header.html %>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span2" id="sidebar">
+                <h3>基本设置</h3>
+            </div>
+            <!--/span-->
+            <div class="span10">
+                <div class="row-fluid">
+                    <div class="span12">
+                        <!-- block -->
+                        <div class="block">
+                           <div class="navbar navbar-inner block-header">
+                                <div class="muted pull-left">基本设置</div>
+                            </div>
+                            <form class="form-horizontal" action="/admin/options_general" method="post" enctype="application/x-www-form-urlencoded">
+                                <div class="control-group">
+                                    <label class="control-label">站点名称</label>
+                                    <div class="controls">
+                                        <input type="text" name="title" class="text" value="<%-options.title%>">
+                                        <span class="help-inline">站点的名称将显示在网页的标题处.</span>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">站点描述</label>
+                                    <div class="controls">
+                                        <input type="text" name="description" class="text" value="<%-options.description%>">
+                                        <span class="help-inline">站点描述将显示在网页代码的头部.</span>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">关键词</label>
+                                    <div class="controls">
+                                        <input name="keywords" type="text" class="text" value="<%-options.keywords%>">
+                                        <span class="help-inline">请以半角逗号 "," 分割多个关键字.</span>
+                                    </div>
+                                </div>
+<!--
+                                <div class="control-group">
+                                    <label class="control-label" for="allowRegister-0">是否允许注册</label>
+                                    <div class="controls">
+                                        <label class="radio inline">
+                                          <input name="allowRegister" type="radio" value="0">不允许
+                                        </label>
+                                        <label class="radio inline">
+                                          <input name="allowRegister" type="radio" value="1">允许
+                                        </label>
+                                        <span class="help-inline" style="padding-top:5px;">允许访问者注册到你的网站, 默认的注册用户不享有任何写入权限.</span>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="keywords-0-3">时区</label>
+                                    <div class="controls">
+                                        <select name="timezone" id="timezone-0-5">
+                                        <option value="0">
+                                        格林威治(子午线)标准时间 (GMT)</option>
+                                        <option value="3600">
+                                        中欧标准时间 阿姆斯特丹,荷兰,法国 (GMT +1)</option>
+                                        <option value="7200">
+                                        东欧标准时间 布加勒斯特,塞浦路斯,希腊 (GMT +2)</option>
+                                        <option value="10800">
+                                        莫斯科时间 伊拉克,埃塞俄比亚,马达加斯加 (GMT +3)</option>
+                                        <option value="14400">
+                                        第比利斯时间 阿曼,毛里塔尼亚,留尼汪岛 (GMT +4)</option>
+                                        <option value="18000">
+                                        新德里时间 巴基斯坦,马尔代夫 (GMT +5)</option>
+                                        <option value="21600">
+                                        科伦坡时间 孟加拉 (GMT +6)</option>
+                                        <option value="25200">
+                                        曼谷雅加达 柬埔寨,苏门答腊,老挝 (GMT +7)</option>
+                                        <option value="28800" selected="true">
+                                        北京时间 香港,新加坡,越南 (GMT +8)</option>
+                                        <option value="32400">
+                                        东京平壤时间 西伊里安,摩鹿加群岛 (GMT +9)</option>
+                                        <option value="36000">
+                                        悉尼关岛时间 塔斯马尼亚岛,新几内亚 (GMT +10)</option>
+                                        <option value="39600">
+                                        所罗门群岛 库页岛 (GMT +11)</option>
+                                        <option value="43200">
+                                        惠灵顿时间 新西兰,斐济群岛 (GMT +12)</option>
+                                        <option value="-3600">
+                                        佛德尔群岛 亚速尔群岛,葡属几内亚 (GMT -1)</option>
+                                        <option value="-7200">
+                                        大西洋中部时间 格陵兰 (GMT -2)</option>
+                                        <option value="-10800">
+                                        布宜诺斯艾利斯 乌拉圭,法属圭亚那 (GMT -3)</option>
+                                        <option value="-14400">
+                                        智利巴西 委内瑞拉,玻利维亚 (GMT -4)</option>
+                                        <option value="-18000">
+                                        纽约渥太华 古巴,哥伦比亚,牙买加 (GMT -5)</option>
+                                        <option value="-21600">
+                                        墨西哥城时间 洪都拉斯,危地马拉,哥斯达黎加 (GMT -6)</option>
+                                        <option value="-25200">
+                                        美国丹佛时间 (GMT -7)</option>
+                                        <option value="-28800">
+                                        美国旧金山时间 (GMT -8)</option>
+                                        <option value="-32400">
+                                        阿拉斯加时间 (GMT -9)</option>
+                                        <option value="-36000">
+                                        夏威夷群岛 (GMT -10)</option>
+                                        <option value="-39600">
+                                        东萨摩亚群岛 (GMT -11)</option>
+                                        <option value="-43200">
+                                        艾尼威托克岛 (GMT -12)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                   <label class="control-label" for="keywords-0-3">允许上传的文件类型</label>
+                                    <div class="controls">
+                                        <label class="checkbox">
+                                          <input type="checkbox" value="">
+                                          图片文件 (gif jpg png tiff bmp)
+                                        </label>
+                                        <label class="checkbox">
+                                          <input type="checkbox" value="">
+                                           多媒体文件 (mp3 wmv wma rmvb rm avi flv)
+                                        </label>
+                                        <label class="checkbox">
+                                          <input type="checkbox" value="">
+                                           常用档案文件 (txt doc docx xls xlsx ppt pptx zip rar pdf)
+                                        </label>
+                                        <label class="checkbox">
+                                          <input type="checkbox" value="">
+                                            其他格式
+                                          <input type="text" name="attachmentTypesOther" value="">
+                                        </label>
+                                        <span class="help-inline">用逗号 "," 将后缀名隔开, 例如: cpp, h, mak</span>
+                                    </div>
+                                </div>
+-->
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <button type="submit" class="btn btn-primary">保存设置</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /block -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% include inc/admin_footer.html %>

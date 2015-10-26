@@ -1,0 +1,113 @@
+<% include inc/admin_header.html %>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <!--/span-->
+            <div class="span10">
+                <div class="row-fluid">
+                    <div class="span12">
+                        <form class="form-horizontal" action="/admin/write_page" method="post" enctype="application/x-www-form-urlencoded">
+                            <div class="control-group">
+                                <% if(content.cid){ %>
+                                    <input type="hidden" name="cid" value="<%-content.cid%>">
+                                <%}%>
+                                <input type="text" class="span12" name="title" placeholder="标题" value="<%-content.title%>">
+                            </div>
+                            <div class="control-group">
+                                <input type="text" class="span12" name="slug" placeholder="网址缩略名" value="<%-content.slug%>">
+                            </div>
+                            <div class="control-group admin-box">
+                                <textarea rows="10" id="editor" class="span12" name="text"><%-content.text%></textarea>
+                            </div>
+                            <div class="control-group">
+                                <div class="controls">
+                                    <% if(!content.cid){ %>
+                                    <button type="submit" value="save" name="do" class="btn" type="button">保存草稿</button>
+                                    <button type="submit" value="publish" name="do" class="btn btn-primary">发布页面</button>
+                                    <%}else{%>
+                                        <a class="btn" data-toggle="modal" href="#delete_page">删除页面</a>
+                                        <button type="submit" value="save" name="do" class="btn" type="button">保存草稿</button>
+                                        <button type="submit" value="publish" name="do" class="btn btn-primary">发布页面</button>
+                                    <%}%>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="span2">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#home" data-toggle="tab">选项</a>
+                    </li>
+                    <li><a href="#profile" data-toggle="tab">附件</a>
+                    </li>
+                </ul>
+                <div class="tab-content span12">
+                    <div class="tab-pane active span12" id="home">
+                        <div class="control-group" style="padding-top:0;">
+                            <label class="control-label">页面顺序</label>
+                            <div class="controls">
+                                <input class="span12" type="text" style="outline: none;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane span11" id="profile">
+                        <input type="file" class="droparea spot span10" name="xfile" data-post="/admin/upload"  data-crop="true" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% if(content.cid){ %>
+    <!-- Modal -->
+    <div id="delete_page" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="delete_page_header" aria-hidden="true">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="delete_page_header">确认删除</h3>
+      </div>
+      <div class="modal-body">
+        <p>是否确认要删除页面？</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">否</button>
+        <a href="/admin/delete_page/<%-content.cid%>" class="btn btn-primary">是</a>
+      </div>
+    </div>
+    <%}%>
+    <% include inc/admin_footer.html %>
+        <script type="text/javascript" src="/js/editor/editor.js"></script>
+        <script type="text/javascript" src="/js/editor/marked.js"></script>
+        <script src="/js/droparea.js"></script>
+        <script>
+            $(function () {
+                var editor = new Editor();
+                editor.render();
+                $('.droparea').droparea({
+                    'instructions': '',
+                    'init': function (result) {
+                        //console.log('custom init',result);
+                    },
+                    'start': function (area) {
+                        area.find('.error').remove();
+                    },
+                    'error': function (result, input, area) {
+                        $('<div class="error">').html(result.error).prependTo(area);
+                        return 0;
+                    },
+                    'complete': function (result, file, input, area) {
+                        if ((/image/i).test(file.type)) {
+                            //area.find('img').remove();
+                            //area.find('input.jq_append').remove();
+                            area.append($('<img>', {
+                                'src': result.path + result.filename + '?' + Math.random()
+                            }));
+                            area.append($('<input>', {
+                                'class': "span12 jq_append",
+                                'type':"text",
+                                'style':"outline: none;",
+                                'value':result.path + result.filename
+                            }));
+                        }
+                    }
+                });
+            });
+        </script>

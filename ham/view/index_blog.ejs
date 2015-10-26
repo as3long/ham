@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Blog</title>
+    <% include inc/link-meta.html %>
+</head>
+
+<body>
+    <% include inc/header1.html %>
+        <!-- start main -->
+        <div class="main">
+            <div class="wrap">
+                <div class="blog">
+                    <!-- start blog -->
+                    <div class="blog_left">
+                        <!-- start blog_left -->
+                        <%if(contents.length==0){%>
+                            <div class="blog_main">
+                                <!--					<img src="/images/blog_pic1.jpg" alt=""/>-->
+                                <div class="b_right">
+                                    <a href="/index/blog"><h4>返回博客首页</h4></a> 
+                                    <div class="blog_art">
+                                        <div class="clear"></div>
+                                    </div>
+                                </div>
+                                <p>该页面没有内容</p>
+                                <div class="clear"></div>
+                            </div>
+                            <%}%>
+                                <%contents.forEach(function(content){%>
+                                    <div class="blog_main" style="line-height:2;">
+                                        <div class="b_right">
+                                            <a href="/archives/blog/<%-content.cid%>"><h4><%-content.title%></h4></a> 
+                                            <div class="blog_list">
+                                                <ul>
+                                                    <li><i class="date"> </i>  <span><%-getDate(content.created)%></span>
+                                                    </li>
+                                                    <li><i class="comment"> </i><a href="/archives/blog/<%-content.cid%>#ds-thread"><span class="ds-thread-count" data-thread-key="<%-content.cid%>">comment</span></a>
+                                                    </li>
+                                                    <li><i class="news"> </i><span><%-content.tags||"没有tag"%></span>
+                                                    </li>
+                                                    <li><i class="views"> </i>
+                                                        <a href="#"> <span>124 views</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                                <div class="clear"></div>
+                                            </div>
+                                            <div class="blog_art">
+                                                <ul>
+                                                    <li>
+                                                        <a href="#"> 
+                                                        <i> </i><span>18</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                                <div class="clear"></div>
+                                            </div>
+                                        </div>
+                                        <div class="clear"></div>
+                                        <%-content.text%>
+                                        <div class="clear"></div>
+                                        <a class="btn" href="/archives/blog/<%-content.cid%>">read more</a>
+                                    </div>
+                                    <%})%>
+                                        <div class="clear"></div>
+                                        <ul class="tag_nav">
+                                            <% pages.forEach(function(page){%>
+                                                <%if(page==now_page){%>
+                                                <li><%-page%></li>
+                                                <%}else{%>
+                                                <li><a href="/index/blog/<%-page%>"><%-page%></a></li>
+                                            <%}})%>
+                                        </ul>
+                    </div>
+                    <!-- end blog_left -->
+                    <div class="blog_sidebar">
+                        <!-- start blog_sidebar -->
+                        <div class="sidebar">
+                            <% include inc/category_nav.html %>
+                                <% include inc/tag_nav.html %>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <!-- end blog -->
+            </div>
+        </div>
+        <% include inc/footer.html %>
+</body>
+
+</html>

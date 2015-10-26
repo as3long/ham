@@ -1,0 +1,56 @@
+<% include inc/admin_header.html %>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span2" id="sidebar">
+                <h3><%if(category&&category.mid){%>修改分类<%}else{%>新增分类<%}%></h3>
+            </div>
+            <!--/span-->
+            <div class="span10">
+                <div class="row-fluid">
+                    <div class="span12">
+                        <!-- block -->
+                        <div class="block">
+                           <div class="navbar navbar-inner block-header">
+                                <div class="muted pull-left"><%if(category&&category.mid){%>修改分类<%}else{%>新增分类<%}%></div>
+                            </div>
+                            <form class="form-horizontal" action="/admin/category" method="post" enctype="application/x-www-form-urlencoded">
+                                <div class="control-group">
+                                    <label class="control-label">分类名称</label>
+                                    <div class="controls">
+                                        <input name="name" type="text" class="text" value="<%-category.name%>">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">分类缩略名</label>
+                                    <div class="controls">
+                                        <input name="slug" type="text" class="text" value="<%-category.slug%>">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">分类描述</label>
+                                    <div class="controls">
+                                        <textarea name="description" type="text" class="text"><%-category.description%></textarea>
+                                    </div>
+                                </div>
+                                <%if(category&&category.mid){%>
+                                    <input name="mid" type="hidden" class="text" value="<%-category.mid%>">
+                                <%}%>
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <%if(category&&category.mid){%>
+                                            <button type="submit" name="del" value="1" class="btn btn-primary">删除</button>
+                                            <button type="submit" class="btn btn-primary">修改分类</button>
+                                        <%}else{%>
+                                            <button type="submit" class="btn btn-primary">增加分类</button>
+                                        <%}%>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /block -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% include inc/admin_footer.html %>

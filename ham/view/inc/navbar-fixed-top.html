@@ -1,0 +1,93 @@
+<div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <a class="brand" href="#">Ham管理面板</a>
+                <div class="nav-collapse collapse">
+                    <ul class="nav pull-right">
+                        <li class="dropdown">
+                            <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-user"></i>as3long<i class="caret"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a tabindex="-1" href="/admin/profile">Profile</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a tabindex="-1" href="/admin/logout">退出</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav">
+                        <li class="<% if(navActive=='index'||navActive=='profile'){%>active<%}%>">
+                            <a href="javascript:void(0);" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">控制台</a>
+                            <ul class="dropdown-menu">
+                                <li class="<% if(navActive=='index'){%>active<%}%>">
+                                    <a href="/admin/index">概要</a>
+                                </li>
+                                <li class="<% if(navActive=='profile'){%>active<%}%>">
+                                    <a href="/admin/profile">个人设置</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li  class="dropdown <% if(navActive.indexOf('write')>-1){%>active<%}%>">
+                            <a href="javascript:void(0);"  class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">撰写</a>
+                            <ul class="dropdown-menu">
+                                <li class="<% if(navActive=='write_post'){%>active<%}%>">
+                                    <a href="/admin/write_post">撰写文章</a>
+                                </li>
+                                <li class="<% if(navActive=='write_page'){%>active<%}%>">
+                                    <a href="/admin/write_page">创建页面</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown <% if(navActive.indexOf('manage')>-1){%>active<%}%>">
+                            <a href="javascript:void(0);"  class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">管理</a>
+                             <ul class="dropdown-menu">
+                                <li class="<% if(navActive=='manage_posts'){%>active<%}%>">
+                                    <a href="/admin/manage_posts">文章</a>
+                                </li>
+                                <li class="<% if(navActive=='manage_pages'){%>active<%}%>">
+                                    <a href="/admin/manage_pages">独立页面</a>
+                                </li>
+                                <li class="<% if(navActive=='manage_comments'){%>active<%}%>">
+                                    <a href="/admin/manage_comments">评论</a>
+                                </li>
+                                <li class="<% if(navActive=='manage_categories'){%>active<%}%>">
+                                    <a href="/admin/manage_categories">分类</a>
+                                </li>
+                                <li class="<% if(navActive=='manage_tags'){%>active<%}%>">
+                                    <a href="/admin/manage_tags">标签</a>
+                                </li>
+                                <li class="<% if(navActive=='manage_medias'){%>active<%}%>">
+                                    <a href="/admin/manage_medias">文件</a>
+                                </li>
+                                <li class="<% if(navActive=='manage_users'){%>active<%}%>">
+                                    <a href="/admin/manage_users">用户</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown <% if(navActive.indexOf('options')>-1){%>active<%}%>">
+                            <a href="javascript:void(0);" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">设置</a>
+                            <ul class="dropdown-menu">
+                                <li class="<% if(navActive=='options_general'){%>active<%}%>">
+                                    <a href="/admin/options_general">基本</a>
+                                </li>
+                                <li>
+                                    <a href="#">评论</a>
+                                </li>
+                                <li class="<% if(navActive=='options_reading'){%>active<%}%>">
+                                    <a href="/admin/options_reading">阅读</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!--/.nav-collapse -->
+            </div>
+        </div>
+    </div>

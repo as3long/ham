@@ -1,0 +1,50 @@
+<% include inc/admin_header.html %>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span2" id="sidebar">
+                <h3><%if(tag&&tag.mid){%>修改标签<%}else{%>新增标签<%}%></h3>
+            </div>
+            <!--/span-->
+            <div class="span10">
+                <div class="row-fluid">
+                    <div class="span12">
+                        <!-- block -->
+                        <div class="block">
+                           <div class="navbar navbar-inner block-header">
+                                <div class="muted pull-left"><%if(tag&&tag.mid){%>修改标签<%}else{%>新增标签<%}%></div>
+                            </div>
+                            <form class="form-horizontal" action="/admin/tag" method="post" enctype="application/x-www-form-urlencoded">
+                                <div class="control-group">
+                                    <label class="control-label">标签名称</label>
+                                    <div class="controls">
+                                        <input name="name" type="text" class="text" value="<%-tag.name%>">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">标签缩略名</label>
+                                    <div class="controls">
+                                        <input name="slug" type="text" class="text" value="<%-tag.slug%>">
+                                    </div>
+                                </div>
+                                <%if(tag&&tag.mid){%>
+                                    <input name="mid" type="hidden" class="text" value="<%-tag.mid%>">
+                                <%}%>
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <%if(tag&&tag.mid){%>
+                                            <button type="submit" name="del" value="1" class="btn btn-primary">删除</button>
+                                            <button type="submit" class="btn btn-primary">修改标签</button>
+                                        <%}else{%>
+                                            <button type="submit" class="btn btn-primary">增加标签</button>
+                                        <%}%>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /block -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% include inc/admin_footer.html %>

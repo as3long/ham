@@ -1,0 +1,84 @@
+<% include inc/admin_header.html %>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span2" id="sidebar">
+                <h3>阅读设置</h3>
+            </div>
+            <!--/span-->
+            <div class="span10">
+                <div class="row-fluid">
+                    <div class="span12">
+                        <!-- block -->
+                        <div class="block">
+                           <div class="navbar navbar-inner block-header">
+                                <div class="muted pull-left">阅读设置</div>
+                            </div>
+                            <form class="form-horizontal" action="/admin/options_reading" method="post" enctype="application/x-www-form-urlencoded">
+<!--
+                                <div class="control-group">
+                                    <label class="control-label" for="postDateFormat-0-1">文章日期格式</label>
+                                    <div class="controls">
+                                        <input type="text" name="postDateFormat" id="postDateFormat-0-1">
+                                        <span class="help-inline">此格式用于指定显示在文章归档中的日期默认显示格式.<br/>
+在某些主题中这个格式可能不会生效, 因为主题作者可以自定义日期格式.</span>
+                                    </div>
+                                </div>
+-->
+<!--
+                                <div class="control-group">
+                                    <label class="control-label" for="description-0-2">站点首页</label>
+                                    <div class="controls">
+                                        <label class="radio">
+                                          <input name="frontPage" type="radio" value="recent">
+                                          显示最新发布的文章
+                                        </label>
+                                        <label class="radio">
+                                          <input name="frontPage" type="radio" value="page">
+                                          使用<select name="frontPagePage" style="width:80px;"><option value="2">关于</option></select>页面作为首页
+                                        </label>
+                                    </div>
+                                </div>
+-->
+                                <div class="control-group">
+                                    <label class="control-label">文章列表数目</label>
+                                    <div class="controls">
+                                        <input name="postsListSize" type="text" class="text" value="<%-options.postsListSize%>">
+                                        <span class="help-inline">此数目用于指定显示在侧边栏中的文章列表数目.</span>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">每页文章数目</label>
+                                    <div class="controls">
+                                        <input name="pageSize" type="text" class="text" value="<%-options.pageSize%>">
+                                        <span class="help-inline">此数目用于指定显示在侧边栏中的文章列表数目.</span>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" style="padding-top:13px;">聚合全文输出</label>
+                                    <div class="controls">
+                                        <label class="radio inline">
+                                          <input name="feedFullText" type="radio" value="0" <% if(options.feedFullText==0){%>checked="true"<%}%> >
+                                          仅输出摘要
+                                        </label>
+                                        <label class="radio inline">
+                                          <input name="feedFullText" type="radio" value="1" <% if(options.feedFullText==1){%>checked="true"<%}%>>
+                                           全文输出
+                                        </label>
+                                        <span class="help-inline">如果你不希望在聚合中输出文章全文,请使用仅输出摘要选项.<br/>
+摘要的文字取决于你在文章中使用分隔符的位置.</span>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <button type="submit" class="btn btn-primary">保存设置</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /block -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% include inc/admin_footer.html %>

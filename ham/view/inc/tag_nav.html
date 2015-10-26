@@ -1,0 +1,8 @@
+<!-- start tag_nav -->
+<h4>tags</h4>
+<ul class="tag_nav">
+    <%tagList.forEach(function(tag){%>
+        <li><a href="/archives/tag/<%-tag.mid%>"><%-tag.name%></a></li>
+    <%})%>
+    <div class="clear"></div>
+</ul>
