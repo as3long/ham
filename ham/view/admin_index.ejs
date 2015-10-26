@@ -1,0 +1,69 @@
+<% include inc/admin_header.html %>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span2" id="sidebar">
+                <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
+                    <li class="active">
+                        <a href="/admin.php/Index/index.html"><i class="icon-chevron-right"></i>作品列表</a>
+                    </li>
+                    <li>
+                        <a href="/admin.php/Index/works_editors.html"><i class="icon-chevron-right"></i>添加作品</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!--/span-->
+            <div class="span10">
+                <div class="row-fluid">
+                    <div class="span12">
+                        <!-- block -->
+                        <div class="block">
+                            <div class="navbar navbar-inner block-header">
+                                <div class="muted pull-left">Users</div>
+                                <div class="pull-right"><span class="badge badge-info">24</span>
+
+                                </div>
+                            </div>
+                            <div class="block-content collapse in">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>标题</th>
+                                            <th>类型</th>
+                                            <th>说明</th>
+                                            <th>首页显示</th>
+                                            <th>更新时间</th>
+                                            <th>创建时间</th>
+                                            <th>编辑</th>
+                                            <th>删除</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>53</td>
+                                            <td>汽车车行高...</td>
+                                            <td>
+                                                网站设计</td>
+                                            <td class="span4">某车行电子商务官网（DEMO），由深圳半人马设计承接的深圳高端品牌网站设计,深圳网站设计项目DEMO DEMO既然花时间和精力做了，还是发出来和大家分享吧。 {深圳半人马设计}2013-11月出品
+                                            </td>
+                                            <td>
+                                                否</td>
+                                            <td>2014-07-13 23:09:14</td>
+                                            <td>2013-12-11 14:06:05</td>
+                                            <td><a href="/admin.php/Index/works_editors.html?id=53">编辑</a>
+                                            </td>
+                                            <td><a href="/admin.php/Index/works_del.html?id=53">删除</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- /block -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<% include inc/admin_footer.html %>

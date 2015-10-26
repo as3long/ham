@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title><%-content.title%></title>
+<% include inc/link-meta.html %>
+</head>
+<body>
+<% include inc/header1.html %>
+<!-- start main -->
+<div class="main">
+<div class="wrap">
+		<div class="blog"><!-- start blog -->
+			<div class="blog_left">	<!-- start blog_left -->
+				<div class="blog_main">
+					<div class="b_right">
+						<h1><%-content.title%></h1>
+						<div class="blog_list">
+					      		<ul>
+							  		<li><i class="date"> </i> <span><%-getDate(content.created)%></span></li>
+							  		<li><i class="comment"> </i><a href="#ds-thread"> <span class="ds-thread-count" data-thread-key="<%-content.cid%>"></span></a></li>
+				  					<li><i class="news"> </i><span>Public, News</span></li>
+					    		</ul>
+					    		<div class="clear"></div>
+					      </div>
+					</div>
+					<div class="clear"></div>
+					  <%-content.text%>
+				 </div>
+				 <!-- 多说评论框 start -->
+                <div class="ds-thread" data-thread-key="<%-content.cid%>" data-title="<%-content.title%>" data-url="http://ham.360rush.com/archives/blog/<%-content.cid%>"></div>
+            <!-- 多说评论框 end -->
+			</div><!-- end blog_left -->
+			<div class="blog_sidebar"><!-- start blog_sidebar -->
+				<div class="sidebar">
+		          	<% include inc/category_nav.html %>
+					<% include inc/tag_nav.html %>
+				</div>
+				</div>
+				<div class="clear"></div>
+	</div><!-- end blog -->
+</div>
+</div>
+<% include inc/footer.html %>
+</body>
+</html>

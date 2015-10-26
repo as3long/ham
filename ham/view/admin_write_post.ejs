@@ -1,0 +1,157 @@
+<link rel="stylesheet" href="//cdnjscn.b0.upaiyun.com/libs/jquery-tagsinput/1.3.3/jquery.tagsinput.css">
+    <style>
+        .editor-toolbar [class^="icon-"],
+        [class*=" icon-"] {
+            background-image: none;
+        }
+        .admin-box {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 0 10px;
+        }
+        .tags input {
+            width: 190px;
+        }
+    </style>
+<% include inc/admin_header.html %>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <!--/span-->
+            <div class="span10">
+                <div class="row-fluid">
+                    <div class="span12">
+                        <form id="write_post" class="form-horizontal" action="/admin/write_post" method="post" enctype="application/x-www-form-urlencoded">
+                            <div class="control-group">
+                                <input type="text" class="span12" name="title" placeholder="标题" value="<%-post.title%>">
+                                <%if(post.cid){%>
+                                <input type="hidden" name="cid"  value="<%-post.cid%>">
+                                <%}%>
+                            </div>
+                            <div class="control-group admin-box">
+                                <textarea rows="10" class="span12" name="text"><%-post.text%></textarea>
+                            </div>
+                            <div class="control-group">
+                                <div class="controls">
+                                    <label class="radio inline">
+                                        <input type="radio" name="status" value="save" >保存草稿
+                                    </label>
+                                    <label class="radio inline">
+                                        <input type="radio" name="status" value="publish" checked>发布文章
+                                    </label>
+                                    <button type="submit" class="btn btn-primary">提交</button>
+                                    <% if(post.cid){ %>
+                                    <a class="btn" data-toggle="modal" href="#delete_post">删除文章</a>
+                                    <%}%>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="span2">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#home" data-toggle="tab">选项</a>
+                    </li>
+                    <li><a href="#profile" data-toggle="tab">附件</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="home">
+                        <div class="control-group" style="padding-top:0;">
+                            <label class="control-label">分类</label>
+                            <div class="controls admin-box">
+                                <% categorys.forEach(function(category){ %>
+                                    <label class="checkbox">
+                                        <input name="category[]" type="checkbox" value="<%-category.mid%>" <%post_categorys.forEach(function(post_category){%><%if(post_category.mid==category.mid){%>checked<%}})%>>
+                                        <%-category.name%>
+                                    </label>
+                                    <% }) %>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">标签</label>
+                            <div class="controls tags">
+                                <input name="tags" id="tags" type="text" value="<%-tags%>">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane span11" id="profile">
+                        <input type="file" class="droparea spot span10" name="xfile" data-post="/admin/upload"  data-crop="true" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% if(post.cid){ %>
+    <!-- Modal -->
+    <div id="delete_post" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="delete_page_header" aria-hidden="true">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="delete_page_header">确认删除</h3>
+      </div>
+      <div class="modal-body">
+        <p>是否确认要删除文章？</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">否</button>
+        <a href="/admin/delete_page/<%-post.cid%>/post" class="btn btn-primary">是</a>
+      </div>
+    </div>
+    <%}%>
+    <% include inc/admin_footer.html %>
+        <script type="text/javascript" src="/js/editor/editor.js"></script>
+        <script type="text/javascript" src="/js/editor/marked.js"></script>
+        <script src="//cdnjscn.b0.upaiyun.com/libs/jquery-tagsinput/1.3.3/jquery.tagsinput.min.js"></script>
+        <script src="/js/jquery.form.js"></script>
+        <script src="/js/droparea.js"></script>
+        <script>
+            function getCheckBoxValue(name) {
+                var chk_value = []; //定义一个数组    
+                $('input[name="' + name + '"]:checked').each(function () { //遍历每一个名字为interest的复选框，其中选中的执行函数    
+                    chk_value.push($(this).val()); //将选中的值添加到数组chk_value中    
+                });
+                return chk_value;
+            }
+            function getFilesValue(name){
+                var chk_value = []; //定义一个数组    
+                $('input[name="' + name + '"]').each(function () { //遍历每一个名字为interest的复选框，其中选中的执行函数    
+                    chk_value.push($(this).val()); //将选中的值添加到数组chk_value中    
+                });
+                return chk_value;
+            }
+            $(function () {
+                var editor = new Editor();
+                editor.render();
+                $('#tags').tagsInput({
+                    'height': '100px',
+                    'width': '180px',
+                    'defaultText': '添加一个tag'
+                });
+                $("#write_post").submit(function(){
+                    var categorys=getCheckBoxValue("category[]");
+                    var tags=$("#tags").val();
+                    $(this).ajaxSubmit({success:function(data){
+                            alert(data);
+                    },data:{tags:tags,categorys:categorys,"uploadFiles": getFilesValue("uploadFiles[]")}
+                    });
+                    return false;
+                });
+                $('.droparea').droparea({
+                    'instructions': '',
+                    'complete': function (result, file, input, area) {
+                        if ((/image/i).test(file.type)) {
+                            area.append($('<img>', {
+                                'src': result.path + result.filename + '?' + Math.random()
+                            }));
+                            area.append($('<input>', {
+                                'class': "span12 jq_append",
+                                'type': "text",
+                                'style': "outline: none;",
+                                'name': "uploadFiles[]",
+                                'value': result.path + result.filename
+                            }));
+                        }
+                    }
+                });
+            });
+        </script>

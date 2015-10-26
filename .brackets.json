@@ -1,0 +1,6 @@
+{
+    "jscodehints.detectedExclusions": [
+        "E:/快盘/node/Ham/node_modules/lodash/dist/lodash.underscore.min.js",
+        "E:/快盘/node/Ham/node_modules/ham/ham.js"
+    ]
+}

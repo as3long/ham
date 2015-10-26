@@ -1,0 +1,51 @@
+<% include inc/admin_header.html %>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span4" id="sidebar">
+                <h3>修改文件信息</h3>
+                <div>
+                    <%if(file.type.indexOf("image")>-1){%>
+                        <img src="<%-file.url%>" />
+                   <%}else{%>
+                         <input name="url" type="text" class="text" value="<%-file.url%>">
+                   <%}%>
+                </div>
+            </div>
+            <!--/span-->
+            <div class="span8">
+                <div class="row-fluid">
+                    <div class="span12">
+                        <!-- block -->
+                        <div class="block">
+                           <div class="navbar navbar-inner block-header">
+                                <div class="muted pull-left">修改文件信息</div>
+                            </div>
+                            <form class="form-horizontal" action="/admin/media" method="post" enctype="application/x-www-form-urlencoded">
+                                <div class="control-group">
+                                    <label class="control-label">文件名称</label>
+                                    <div class="controls">
+                                        <input name="name" type="text" class="text" value="<%-file.name%>">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">文件描述</label>
+                                    <div class="controls">
+                                        <textarea name="info" type="text" class="text"><%-file.info%></textarea>
+                                    </div>
+                                </div>
+                                <input name="mid" type="hidden" class="text" value="<%-file.mid%>">
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <button type="submit" name="del" value="1" class="btn btn-primary">删除</button>
+                                        <button type="submit" class="btn btn-primary">修改文件信息</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /block -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% include inc/admin_footer.html %>

@@ -1,0 +1,105 @@
+<% include inc/admin_header.html %>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span2" id="sidebar">
+                <h3>编辑用户 <%-user.name%> 信息</h3>
+                <div>
+                    <a href="http://gravatar.com/emails/" title="在 Gravatar 上修改头像" target="_blank">
+                        <img src="http://gravatar.duoshuo.com/avatar/<%md5(user.email)%>?s=220&r=X&d=" alt="Gravatar头像">
+                    </a>
+                </div>
+            </div>
+            <!--/span-->
+            <div class="span10">
+                <div class="row-fluid">
+                    <div class="span12">
+                        <!-- block -->
+                        <div class="block">
+                            <div class="navbar navbar-inner block-header">
+                                <div class="muted pull-left">编辑用户信息</div>
+                            </div>
+                            <form class="form-horizontal" action="/admin/user" method="post" enctype="application/x-www-form-urlencoded">
+                                <div class="control-group">
+                                    <label class="control-label">昵称</label>
+                                    <div class="controls">
+                                        <input type="text" name="screenName" value="<%-user.screenName%>">
+                                        <span class="help-inline">用户昵称可以与用户名不同, 用于前台显示.
+                                            <br>如果你将此项留空, 将默认使用用户名.</span>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">个人主页地址</label>
+                                    <div class="controls">
+                                        <input type="text" name="url" value="<%-user.url%>">
+                                        <span class="help-inline">此用户的个人主页地址, 请用 <code>http://</code> 开头.</span>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">
+                                        电子邮箱地址 *</label>
+                                    <div class="controls">
+                                        <input name="mail" type="text" class="text" value="<%-user.mail%>">
+                                        <input type="hidden" name="uid" value="<%-user.uid%>">
+                                        <span class="help-inline">电子邮箱地址将作为此用户的主要联系方式.
+                                        <br>请不要与系统中现有的电子邮箱地址重复.</span>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <button type="submit" class="btn btn-primary">更新我的档案</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /block -->
+                        <!-- block -->
+                        <div class="block">
+                            <div class="navbar navbar-inner block-header">
+                                <div class="muted pull-left">密码修改</div>
+                            </div>
+                            <form id="user_password" name="user_password" method="post" class="form-horizontal" action="/admin/user_password">
+                                <div class="control-group">
+                                    <label class="control-label">用户密码</label>
+                                    <div class="controls">
+                                        <input type="password" name="password" >
+                                        <span class="help-inline">为此用户分配一个密码.
+                                            <br>建议使用特殊字符与字母的混编样式,以增加系统安全性.</span>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">确认密码</label>
+                                    <div class="controls">
+                                        <input type="password" name="password2" >
+                                        <input type="hidden" name="uid" value="<%-user.uid%>">
+                                        <span class="help-inline">再次输入确认密码<br/>密码必须大于或等于6位</span>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <button type="submit" class="btn btn-primary">更新密码</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /block -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% include inc/admin_footer.html %>
+    <script src="/js/jquery.form.js"></script>
+    <script>
+        $(function(){
+            $("#user_password").submit(function(){
+                $(this).ajaxSubmit({dataType: "json",success:function(data){
+                    if(data.status=="true"){
+                        alert("更新成功");
+                    }else{
+                        alert(data.msg);
+                    }
+                }});
+                return false;
+            });
+        });
+    </script>

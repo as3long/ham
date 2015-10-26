@@ -1,0 +1,18 @@
+<% include inc/admin_header.html %>
+    <div class="container" id="login">
+        <form class="form-signin" action="/admin/login" method="post">
+            <h2 class="form-signin-heading">帐号登录</h2>
+            <span><%-pwd_info%></span>
+            <div class="input-prepend">
+                <span class="add-on">邮箱</span>
+                <input type="text" name="email" class="span3" placeholder="输入邮箱">
+            </div>
+            <div class="input-prepend">
+                <span class="add-on">密码</span>
+                <input type="password" name="password" class="span3" placeholder="输入密码">
+            </div>
+            <button class="btn btn-primary" type="submit">点击登录</button>
+            <a href="/admin/regist" class="btn" type="button">马上注册</a>
+        </form>
+    </div>
+<% include inc/admin_footer.html %>
