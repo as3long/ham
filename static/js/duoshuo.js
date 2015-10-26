@@ -1,5 +1,5 @@
 
-defile(function(){
+define(function(){
     (function (e, t, n) {
     function at(e, t) {
         for (var n in t) t[n] && (e[n] ? e[n].set(t[n]) : e[n] = new et(t[n]))
