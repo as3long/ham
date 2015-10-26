@@ -1,5 +1,5 @@
 requirejs.config({
-    baseUrl:"js"
+    baseUrl:"/js"
 });
 
 define(["duoshuo","jquery.lazyloadWebp","prism.full.min"],function(duoshuo,lazyloadWebp,prism){
