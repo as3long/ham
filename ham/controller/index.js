@@ -15,25 +15,23 @@ module.exports = Ham.Controller("base",{
     blogAction: function (page) {
         page=page||1;
         var self=this;
-        Ham.model.table("tags_contents").where({"type":"post","status":"publish","metas_type":"tag"})
+        Promise.all([ Ham.model.table("tags_contents").where({"type":"post","status":"publish","metas_type":"tag"})
             .page(page,self.options.postsListSize).order(["modified","Z"]).cache().select().then(function(data){
-            console.log(data);
             data.forEach(function(item){
                 item.text=marked(item.text);
                 item.text=get_summary(item.text,300);
             });
+            self.assign("contents",data);
+        }),Ham.model.table("tags_contents").where({"type":"post","status":"publish","metas_type":"tag"}).cache().count('cid').then(function(data){
             self.assign("now_page",page);
-            var pageNum=Math.ceil(data.length/self.options.postsListSize);
+            var pageNum=Math.ceil(data/self.options.postsListSize);
             var pages=[];
             for(var i=1;i<pageNum+1;i++){
                 pages.push(i);
             }
             self.assign("pages",pages);
-            self.assign("contents",data);
-        }).then(function(){
+        })]).then(function(){
             self.display();
-        }).catch(function(error){
-            console.log(error);
         });
     },
     /**
