@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 (function (e, t, n) {
     function at(e, t) {
         for (var n in t) t[n] && (e[n] ? e[n].set(t[n]) : e[n] = new et(t[n]))
@@ -3030,5 +3029,4 @@
             }, 2e4), z.ondomready && z.ondomready(), w.initView(), !yt && z.short_name && L("/api/analytics/ping", bt({}), l)
         })
     })
->>>>>>> 3c04c193dc88ca41c2f1379148e7b456fdf67a48
 })(window, document);
