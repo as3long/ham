@@ -6,7 +6,16 @@ module.exports = Ham.Controller("base", {
     blogAction: function (id) {
         var self = this;
         if (id) {
-            Ham.model.table("contents").where("cid", id).cache().find().then(function (data) {
+            var whereObj;
+            if(isNumber(id))
+            {
+                whereObj={cid:id};
+            }
+            else
+            {
+                whereObj={slug:id};
+            }
+            Ham.model.table("contents").where(whereObj).cache().find().then(function (data) {
                 data = data[0];
                 data.text = marked(data.text);
                 self.assign("content", data);
