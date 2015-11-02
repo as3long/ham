@@ -10,6 +10,7 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
   padding: 0.5em;
   background: #23241f;
   -webkit-text-size-adjust: none;
+  border-radius: 5px;
 }
 
 .hljs,
