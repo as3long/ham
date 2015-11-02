@@ -3,6 +3,7 @@
 <head>
 <title><%-content.title%></title>
 <% include inc/link-meta.html %>
+<link rel="stylesheet" href="/css/default.min.css">
 </head>
 <body>
 <% include inc/header1.html %>
@@ -41,5 +42,9 @@
 </div>
 </div>
 <% include inc/footer.html %>
+<script src="/js/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
 </body>
 </html>
