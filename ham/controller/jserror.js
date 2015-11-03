@@ -1,5 +1,8 @@
+var jserror = require("../model/jserror");
 module.exports = Ham.Controller({
     reportAction: function () {
-       this.end('');
+        console.log(this.get());
+        jserror.log(this.get());
+        this.end();
     }
 });

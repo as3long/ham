@@ -17,14 +17,14 @@
         msg.line = line;
         msg.column =columnNumber;
         msg.page = window.location.href;
-        msg.errorObj=errorObj?errorObj.strack:'';
+        msg.strack=errorObj?errorObj.stack.toString():'';
         var s = [];
         //将错误信息转换成字符串
         for (var key in msg) {
-            s.push(key + '=' + msg[key]);
+            s.push(key + '=' + encodeURIComponent(msg[key]));
         }
         s = s.join('&');
         //这里是用增加标签的方法调用日志收集接口，优点是比较简洁。
-        new Image().src = '/jserror/report?' + encodeURIComponent(s) + '&t=' + Math.random();
+        new Image().src = '/jserror/report?' + s + '&t=' + (new Date()).getTime();
     };
 </script>
