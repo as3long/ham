@@ -2,3 +2,5 @@
 
 # 忽略掉所有的sqlite文件
 *.sqlite
+
+/static/upload/*
