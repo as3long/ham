@@ -16,4 +16,4 @@ module.exports = Ham.Controller("base",{
             }
         })
     }
-}
+});
