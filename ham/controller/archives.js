@@ -8,9 +8,13 @@ module.exports = Ham.Controller("base", {
         if (id) {
             Ham.model.table("contents").where("cid", id).cache().find().then(function (data) {
                 data = data[0];
-                data.text = marked(data.text);
-                self.assign("content", data);
-                self.display();
+                if(data){
+                    data.text = marked(data.text);
+                    self.assign("content", data);
+                    self.display();
+                }else{
+                    Ham._404Action(self.req,self.res);
+                }
             });
         } else {
             self.redirect("/index/blog/");
