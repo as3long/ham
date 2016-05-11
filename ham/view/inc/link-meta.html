@@ -3,28 +3,42 @@
 <meta name="keywords" content="<%-options.keywords%>" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <link href="/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+<!--[if lte IE 8]><script src="//libs.cdnjs.net/es5-shim/2.3.0/es5-shim.min.js"><![endif]-->
+</script>
 <script>
     // 基于window.onerror 收集前端错误信息
-    window.onerror = function (message, url, line,columnNumber, errorObj) {
-        if (!url) return;
+    window.onerror = function(message, url, line, columnNumber, errorObj) {
+        if (!url) {
+            return;
+        }
+
         var msg = {};
-        //记录客户端环境
+
+        // 记录客户端环境
         msg.ua = window.navigator.userAgent;
-        //只记录message里的message属性就好了，
-        //错误信息可能会比较晦涩，有些信息完全无用，应酌情过滤
+
+        // 只记录message里的message属性就好了，
+        // 错误信息可能会比较晦涩，有些信息完全无用，应酌情过滤
         msg.message = message.message;
         msg.url = url;
         msg.line = line;
-        msg.column =columnNumber;
+        msg.column = columnNumber;
         msg.page = window.location.href;
-        msg.strack=errorObj?errorObj.stack.toString():'';
+        msg.strack = errorObj ? errorObj.stack.toString() : '';
         var s = [];
-        //将错误信息转换成字符串
+
+        // 将错误信息转换成字符串
         for (var key in msg) {
             s.push(key + '=' + encodeURIComponent(msg[key]));
         }
+
         s = s.join('&');
-        //这里是用增加标签的方法调用日志收集接口，优点是比较简洁。
+
+        // 这里是用增加标签的方法调用日志收集接口，优点是比较简洁。
         new Image().src = '/jserror/report?' + s + '&t=' + (new Date()).getTime();
+
+        if (console) {
+            console.log(s);
+        }
     };
 </script>

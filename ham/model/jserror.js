@@ -1,5 +1,5 @@
-var jserror=module.exports;
+var jserror = module.exports;
 
-jserror.log=function(obj){
-    Ham.model.table("jserror").add(obj);
-}
+jserror.log = function(obj) {
+    Ham.model.table('jserror').add(obj);
+};
