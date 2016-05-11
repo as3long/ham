@@ -6,8 +6,8 @@
   "dependencies": {
     "art-template": "^3.0.3",
     "ham": "^0.0.1",
-    "marked": "^0.3.2",
-    "markdown-js": "^0.0.3"
+    "markdown-js": "^0.0.3",
+    "marked": "^0.3.5"
   },
   "devDependencies": {},
   "scripts": {
