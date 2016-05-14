@@ -444,7 +444,7 @@ define(function(){
             },
             avatarUrl: function (e, t) {
                 var url=e.avatar_url || nt.data.default_avatar_url;
-                return url.replace(/http/g,'https');
+                return  url;// url.replace(/http/g,'https');
             },
             userAnchor: function (e) {
                 var t = J.userUrl(e);
