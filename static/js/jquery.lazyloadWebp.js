@@ -1,4 +1,4 @@
-define(["jquery"], function (jQuery) {
+define(["jquery","localStore"], function (jQuery, localStorage) {
 
     /*
      * Lazy Load - jQuery plugin for lazy loading images
@@ -18,17 +18,26 @@ define(["jquery"], function (jQuery) {
     (function ($, window, document, undefined) {
         var $window = $(window);
         var webpSupport = false;
-        (function () {
+        var checkWebpSupport = function () {
             // native support check
             var t = new Image;
             t.onload = function () {
                 webpSupport = true;
+                localStorage.setItem('iswebp', webpSupport);
             }
             t.onerror = function () {
                 webpSupport = false;
+                localStorage.setItem('iswebp', webpSupport);
             }
             t.src = "data:image/webp;base64,UklGRjAAAABXRUJQVlA4ICQAAACyAgCdASoBAAEALy2Wy2WlpaWlpYEsSygABc6zbAAA/upgAAA=";
-        })();
+        };
+        
+        if(localStorage&&localStorage.getItem('iswebp')!==null) {
+            webpSupport = localStorage.getItem('iswebp');
+        } else {
+            checkWebpSupport();
+        }
+        
         $.fn.lazyloadWebp = function (options) {
             var elements = this;
             var $container;

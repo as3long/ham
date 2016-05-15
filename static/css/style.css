@@ -263,8 +263,8 @@ body {
 /*-- start header --*/
 
 .header {
-    background: url('../images/header.jpg');
-    background-size: 100% 100%;
+    background-color: #727272;
+    background-size: 100%;
     background-position: center;
 }
 /* soc_icons */
@@ -354,6 +354,7 @@ body {
 
 .h_main {
     width: 80%;
+    height: 480px;
     margin: 0 auto;
 }
 .h_img {
@@ -363,7 +364,6 @@ body {
 }
 .h_text {
     float: left;
-    width: 63.33333%;
     margin: 10% 0 0 4%;
 }
 .h_text h2 {
@@ -640,12 +640,11 @@ span.m_4 {
 /*-- start header1 --*/
 
 .header1 {
-    background: url('../images/header1.jpg');
+    background-color: #727272;
     background-size: 100%;
     background-position: center;
     position: relative;
-    padding: 0 0 20% 0;
-    height: 80px;
+    height: 480px;
 }
 /* start about page */
 
