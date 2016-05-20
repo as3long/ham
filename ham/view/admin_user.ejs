@@ -5,7 +5,7 @@
                 <h3>编辑用户 <%-user.name%> 信息</h3>
                 <div>
                     <a href="http://gravatar.com/emails/" title="在 Gravatar 上修改头像" target="_blank">
-                        <img src="http://gravatar.duoshuo.com/avatar/<%md5(user.email)%>?s=220&r=X&d=" alt="Gravatar头像">
+                        <img src="http://gravatar.duoshuo.com/avatar/<%-md5(user.name)%>?s=220&r=X&d=" alt="Gravatar头像">
                     </a>
                 </div>
             </div>
