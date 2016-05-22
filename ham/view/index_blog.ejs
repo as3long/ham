@@ -17,8 +17,8 @@
                         <%if(contents.length==0){%>
                             <div class="blog_main">
                                 <!--					<img src="/images/blog_pic1.jpg" alt=""/>-->
-                                <div class="b_right">
-                                    <a href="/index/blog"><h4>返回博客首页</h4></a> 
+                                <div>
+                                    <a href="/index/blog"><h2>返回博客首页</h2></a> 
                                     <div class="blog_art">
                                         <div class="clear"></div>
                                     </div>
@@ -29,8 +29,8 @@
                             <%}%>
                                 <%contents.forEach(function(content){%>
                                     <div class="blog_main" style="line-height:2;">
-                                        <div class="b_right">
-                                            <a href="/archives/blog/<%-content.cid%>"><h4><%-content.title%></h4></a> 
+                                        <div class="blog_title">
+                                            <a href="/archives/blog/<%-content.cid%>"><h2><%-content.title%></h2></a> 
                                             <div class="blog_list">
                                                 <ul>
                                                     <li><i class="date"> </i>  <span><%-getDate(content.created)%></span>

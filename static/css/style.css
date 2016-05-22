@@ -711,9 +711,6 @@ p.para {
     width: 30.333333%;
     margin-left: 6.33333%;
 }
-.b_right {
-    display: block;
-}
 .b_left h4 {
     display: inline-flex;
     padding: 20px 20px;
@@ -733,6 +730,8 @@ p.para {
 .blog_main {
     margin: 4% 0;
     display: inline-block;
+    color: #333;
+    width: 100%;
 }
 .blog_main img {
     max-width: 100%;
@@ -741,6 +740,89 @@ p.para {
 .blog_main iframe {
     margin-bottom: 4%;
 }
+
+.blog_main ol, .blog_main ul {
+    margin: 20px 0;
+    padding-left: 20px;
+}
+.blog_main ol {
+    list-style: decimal;
+    padding-left: 40px;
+}
+
+.blog_main ol li,.blog_main ul li {
+    line-height: 2
+}
+
+.blog_main ol li p,.blog_main ul li p {
+    margin-bottom: 10px
+}
+
+.blog_main ul li {
+    list-style-type: disc
+}
+
+.blog_main ol li {
+    list-style-type: decimal
+}
+
+.blog_main blockquote {
+    font-size: 1em;
+    font-style: normal;
+    padding: 30px 38px;
+    margin: 0 0 15px;
+    position: relative;
+    line-height: 1.8;
+    text-indent: 0;
+    border: none;
+    color: #888
+}
+
+.blog_main blockquote p {
+    color: #575757
+}
+
+.blog_main blockquote:after,.blog_main blockquote:before {
+    font-family: Arial,serif;
+    font-size: 3em;
+    line-height: 1em;
+    font-weight: 700;
+    position: absolute
+}
+.blog_main p code {
+    background-color: #fff;
+    border: 1px solid #bbb;
+    border-radius: 3px;
+    font-family: Consolas, "Liberation Mono", Courier, monospace;
+    font-size: 75%;
+    margin: 0 2px;
+    padding: 3px 5px;
+    vertical-align: top;
+}
+.blog_main strong {
+    font-weight: bold;
+}
+.blog_main p>code,
+.blog_main li>code,
+.blog_main dd>code,
+.blog_main td>code {
+    background: #eee;
+    padding: 0 5px 2px;
+    border-radius: 4px;
+    position: relative;
+    top: -1px;
+    margin: 0 3px 0 1px;
+    font-size: 90%;
+}
+
+.blog-comment-count {
+    width: 70px;
+    line-height: 20px;
+    display: inline-block;
+    padding: 0 !important;
+    
+}
+
 .b_right h4 {
     color: #6C87BE;
     font-size: 1.5em;
@@ -827,11 +909,9 @@ p.para {
 }
 /* end blog_list */
 
-.blog_left p {
-    text-indent: 2em;
-    margin: 2% 0 4%;
-    color: #777777;
-    text-shadow: 0 1px 0 #ffffff;
+.blog_left p, .blog_left pre{
+    margin: 0 0 20px;
+    color: #333;
     line-height: 1.8em;
     font-size: 1em;
 }
@@ -1534,33 +1614,4 @@ p.para {
     .blog_list ul li:nth-child(3) {
         margin-left: 0;
     }
-}
-.blog_main ul li {
-    list-style: disc;
-    margin: 10px 0;
-}
-.blog_main p code {
-    background-color: #fff;
-    border: 1px solid #bbb;
-    border-radius: 3px;
-    font-family: Consolas, "Liberation Mono", Courier, monospace;
-    font-size: 75%;
-    margin: 0 2px;
-    padding: 3px 5px;
-    vertical-align: top;
-}
-.blog_main strong {
-    font-weight: bold;
-}
-p>code,
-li>code,
-dd>code,
-td>code {
-    background: #eee;
-    padding: 0 5px 2px;
-    border-radius: 4px;
-    position: relative;
-    top: -1px;
-    margin: 0 3px 0 1px;
-    font-size: 90%;
 }
