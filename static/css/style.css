@@ -728,10 +728,9 @@ p.para {
     margin-top: 0;
 }
 .blog_main {
-    margin: 4% 0;
-    display: inline-block;
+    margin: 0 auto;
     color: #333;
-    width: 100%;
+    max-width: 620px;
 }
 .blog_main img {
     max-width: 100%;
