@@ -351,7 +351,28 @@ module.exports = Ham.Controller({
     manage_categoriesAction: function() {
         var self = this;
 
-        Ham.model.table('metas').where('type', 'category').select().then(function(data) {
+        Ham.model.query(
+            'SELECT\
+                ham_metas.name,\
+                ham_metas.mid,\
+                ham_metas.slug,\
+                ham_metas.type,\
+                ham_metas.description,\
+                ham_metas.orderd,\
+                count_metas.count\
+            FROM\
+                ham_metas\
+            LEFT OUTER JOIN (\
+                SELECT\
+                    name,\
+                    count(name) AS count\
+                FROM\
+                    ham_cid_metas\
+                GROUP BY\
+                    name\
+            ) AS count_metas ON count_metas.name = ham_metas.name\
+            WHERE type = "category"'
+        ).then(function(data) {
             self.assign('categories', data);
             self.assign('title', '分类管理');
             self.display();
@@ -376,7 +397,28 @@ module.exports = Ham.Controller({
     manage_tagsAction: function() {
         var self = this;
 
-        Ham.model.table('metas').where('type', 'tag').select().then(function(data) {
+        Ham.model.query(
+            'SELECT\
+                ham_metas.mid,\
+                ham_metas.name,\
+                ham_metas.slug,\
+                ham_metas.type,\
+                ham_metas.description,\
+                ham_metas.orderd,\
+                count_metas.count\
+            FROM\
+                ham_metas\
+            LEFT OUTER JOIN (\
+                SELECT\
+                    name,\
+                    count(name) AS count\
+                FROM\
+                    ham_cid_metas\
+                GROUP BY\
+                    name\
+            ) AS count_metas ON count_metas.name = ham_metas.name\
+            WHERE type = "tag"'
+        ).then(function(data) {
             self.assign('tags', data);
             self.assign('title', '标签管理');
             self.display();
@@ -566,7 +608,7 @@ module.exports = Ham.Controller({
         var self = this;
 
         if (self.isGet) {
-            if (id != undefined) {
+            if (id != undefined&&id!='') {
                 var whereObj = {
                     type: 'tag'
                 };
